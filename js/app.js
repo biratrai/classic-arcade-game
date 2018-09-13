@@ -39,6 +39,7 @@ Player.prototype.update = function(event) {
 //render() method for player:
 Player.prototype.render = function(event) {
     console.log(`render ${event}`);
+     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //handleInput() method for player:
