@@ -32,19 +32,38 @@ var Player = function() {
 };
 
 //update() method for player:
-Player.prototype.update = function(event) {
-    console.log(`update ${event}`);
+Player.prototype.update = function() {
+    console.log(`update`);
 };
 
 //render() method for player:
-Player.prototype.render = function(event) {
-    console.log(`render ${event}`);
-     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+Player.prototype.render = function() {
+    console.log(`render ${this.x} ${this.y}`);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //handleInput() method for player:
 Player.prototype.handleInput = function(event) {
     console.log(`handleInput ${event}`);
+    //if left key is pressed:
+    if(event === 'left' && this.x > 0) { //Check player isn't on left edge
+        this.x = this.x - 100;
+    }
+
+    //if right key is pressed:
+    if(event === 'right' && this.x < 400) { //Check player isn't on right edge
+        this.x = this.x + 100;
+    }
+
+    //if up key is pressed:
+    if(event === 'up' && this.y > 0) {
+        this.y = this.y - 90;
+    }
+
+    //if down key is pressed:
+    if(event === 'down' && this.y < 400) {
+        this.y = this.y + 90;
+    }
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
