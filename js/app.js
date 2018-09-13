@@ -25,8 +25,8 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.x = 200;
-    this.y = 400;
+    this.x = 202;
+    this.y = 402;
     this.speed = 50;
     this.sprite = 'images/char-boy.png';
 };
@@ -46,23 +46,23 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(event) {
     console.log(`handleInput ${event}`);
     //if left key is pressed:
-    if(event === 'left' && this.x > 0) { //Check player isn't on left edge
+    if(event === 'left' && this.x > 2) { //Check player isn't on left edge
         this.x = this.x - 100;
     }
 
     //if right key is pressed:
-    if(event === 'right' && this.x < 400) { //Check player isn't on right edge
+    if(event === 'right' && this.x < 402) { //Check player isn't on right edge
         this.x = this.x + 100;
     }
 
     //if up key is pressed:
-    if(event === 'up' && this.y > 0) {
-        this.y = this.y - 90;
+    if(event === 'up' && this.y > 2) {
+        this.y = this.y - 82;
     }
 
     //if down key is pressed:
-    if(event === 'down' && this.y < 400) {
-        this.y = this.y + 90;
+    if(event === 'down' && this.y < 402) {
+        this.y = this.y + 82;
     }
 };
 // Now instantiate your objects.
