@@ -16,13 +16,20 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    console.log(`Enemy.update`);
+
+    // Move enemy sprite along the x-axis with increase of delta time
+    this.x += this.speed * dt;
+
+    // Check if enemy sprite are off the canvas
+    if (this.x > 606) {
+        this.x = -30; // Initialize to start
+        this.speed = 100 + Math.floor(Math.random() * 200); // Generate random speed
+    };
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log(`Enemy.prototype.render`);
 };
 
 // Now write your own player class
