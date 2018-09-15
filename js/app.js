@@ -40,6 +40,8 @@ var Player = function() {
     this.y = 402;
     this.speed = 50;
     this.sprite = 'images/char-boy.png';
+    this.score = 0;
+    this.highScore = 0;
 };
 
 // update() method for player:
@@ -75,6 +77,18 @@ Player.prototype.handleInput = function(event) {
         this.y = this.y + 82;
     }
 };
+
+Player.prototype.renderStatus = function() {
+    ctx.clearRect(0, 20 , 505 , 25);
+    ctx.font = "20px Roboto";
+    // Draw scores on the top left
+    ctx.fillText("Score: " + this.score, 0, 40);
+    // High score during gaming session
+    if(this.score > this.highScore) this.highScore = this.score;
+    ctx.fillText("High Score: " + this.highScore, 380, 40);
+
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
