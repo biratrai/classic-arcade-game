@@ -1,3 +1,6 @@
+var SPRITE_WIDTH = 80;
+var SPRITE_HEIGHT = 60;
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
@@ -89,6 +92,30 @@ Player.prototype.renderStatus = function() {
 
 };
 
+checkCollisions = function() {
+    allEnemies.forEach(function(enemy) {
+        if(collide(enemy, player)){
+           console.log('collided');
+           resetPlayerStat();
+        }
+    });
+};
+
+// Returns true if sprite1 and sprite2 collide
+function collide(sprite1, sprite2) {
+        return (sprite2.x < (sprite1.x + SPRITE_WIDTH)
+            && (sprite2.x + SPRITE_WIDTH) > sprite1.x
+            && sprite2.y < (sprite1.y + SPRITE_HEIGHT)
+            && (SPRITE_HEIGHT + sprite2.y) > sprite1.y);
+}
+
+// Resets player to initial position, speed and score
+function resetPlayerStat(){
+    player.x = 202;
+    player.y = 402;
+    player.speed = 50;
+    player.score = 0;
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
