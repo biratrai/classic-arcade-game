@@ -2,13 +2,18 @@ var SPRITE_WIDTH = 80;
 var SPRITE_HEIGHT = 60;
 
 let modal;
+let showModal = true;
 
 function loadGame(){
     modal = document.getElementById('myModal');
-    modal.style.display = "block";
+    if(showModal){
+        modal.style.display = "block";
+        showModal = false;   
+    }
 }
 
 function startGame(){
+    console.log("start game "+ modal);
     modal.style.display = "none";
 }
 
