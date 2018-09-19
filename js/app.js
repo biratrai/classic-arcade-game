@@ -10,8 +10,7 @@ let showModal = true;
 function loadGame(){
     modal = document.getElementById('myModal');
     if(showModal){
-        modal.style.display = "block";
-        showModal = false;   
+        modal.style.display = "block";      
     }
 }
 
@@ -21,6 +20,7 @@ function loadGame(){
 function startGame(){
     console.log("start game "+ modal);
     modal.style.display = "none";
+    showModal = false;   
 }
 
 /* Function to set the avatar of the sprite
@@ -46,20 +46,23 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if(!showModal){
+        // Move enemy sprite along the x-axis with increase of delta time
+        this.x += this.speed * dt;
 
-    // Move enemy sprite along the x-axis with increase of delta time
-    this.x += this.speed * dt;
-
-    // Check if enemy sprite are off the canvas
-    if (this.x > 606) {
-        this.x = -30; // Initialize to start
-        this.speed = 100 + Math.floor(Math.random() * 200); // Generate random speed
-    };
+        // Check if enemy sprite are off the canvas
+        if (this.x > 606) {
+            this.x = -30; // Initialize to start
+            this.speed = 100 + Math.floor(Math.random() * 200); // Generate random speed
+        };
+    }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    if(!showModal){
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 };
 
 // Now write your own player class
