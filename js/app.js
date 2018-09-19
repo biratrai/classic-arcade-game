@@ -4,6 +4,9 @@ var SPRITE_HEIGHT = 60;
 let modal;
 let showModal = true;
 
+/*
+* Function to load the game show the modal
+*/
 function loadGame(){
     modal = document.getElementById('myModal');
     if(showModal){
@@ -12,11 +15,19 @@ function loadGame(){
     }
 }
 
+/*
+* Function to start the game and hide the modal
+*/
 function startGame(){
     console.log("start game "+ modal);
     modal.style.display = "none";
 }
 
+/* Function to set the avatar of the sprite
+*/
+function setAvatar(avatarName) {
+    player.sprite = avatarName;
+}
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
@@ -58,7 +69,7 @@ var Player = function() {
     this.x = 202;
     this.y = 402;
     this.speed = 50;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-princess-girl.png';
     this.score = 0;
     this.highScore = 0;
 };
@@ -73,7 +84,7 @@ Player.prototype.update = function(dt) {
 
 // render() method for player:
 Player.prototype.render = function() {
-    // console.log(`render ${this.x} ${this.y}`);
+    console.log(`render ${this.x} ${this.y} ${this.sprite}`);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 

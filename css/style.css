@@ -46,3 +46,35 @@ body, h1, h2 {
     display: none !important;
     opacity: 0 !important;
 }
+
+.btn {
+    border-radius: 50%;
+}
+.sprite1 {
+    background-image: url(../images/char-boy.png);
+}
+
+.sprite2 {
+    background-image: url(../images/char-princess-girl.png);
+}
+
+.sprite3 {
+    background-image: url(../images/char-cat-girl.png);
+}
+
+.sprite4 {
+    background-image: url(../images/char-pink-girl.png);
+}
+.sprite {
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     display: inline-block;
+     border: none;
+     padding: 20px;
+     width: 70px;
+     border-radius: 50%;
+     height: 70px;
+     transition: all 0.5s;
+     cursor: pointer;
+}
