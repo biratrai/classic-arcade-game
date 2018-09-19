@@ -1,6 +1,17 @@
 var SPRITE_WIDTH = 80;
 var SPRITE_HEIGHT = 60;
 
+let modal;
+
+function loadGame(){
+    modal = document.getElementById('myModal');
+    modal.style.display = "block";
+}
+
+function startGame(){
+    modal.style.display = "none";
+}
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
@@ -49,7 +60,10 @@ var Player = function() {
 
 // update() method for player:
 Player.prototype.update = function(dt) {
-    // console.log(`update ${dt}`);
+    // Reset the player score
+     if(this.y <= 0 ) {
+        resetPlayerStat(++this.score);
+    }
 };
 
 // render() method for player:
@@ -96,7 +110,7 @@ checkCollisions = function() {
     allEnemies.forEach(function(enemy) {
         if(collide(enemy, player)){
            console.log('collided');
-           resetPlayerStat();
+           resetPlayerStat(0);
         }
     });
 };
@@ -110,11 +124,11 @@ function collide(sprite1, sprite2) {
 }
 
 // Resets player to initial position, speed and score
-function resetPlayerStat(){
+function resetPlayerStat(score){
     player.x = 202;
     player.y = 402;
     player.speed = 50;
-    player.score = 0;
+    player.score = score;
 }
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
