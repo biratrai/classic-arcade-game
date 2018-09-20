@@ -4,46 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Frogger: Classic Arcade Game</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="loadGame()">
     <div class="container">
-        <div id="myModal" class="overlay modal">
+        <div id="myModal" class="modal show">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1>Welcome to the Frogger!</h1>
                 </div>
                 <h2>Choose your Avatar! 🤖</h2>
-                <div class="modal-body row">
-                    <div class=" col-sm-3 box effect1">
+                <div class="modal-body character-select">
+                    <div class="col-sm-3">
                         <button class="btn sprite sprite1" onclick="setAvatar('images/char-boy.png')"></button>
                     </div>
-                    <div class=" col-sm-3">
+                    <div class="col-sm-3">
                         <button class="btn sprite sprite2" onclick="setAvatar('images/char-princess-girl.png')"></button>
                     </div>
-                    <div class=" col-sm-3">
+                    <div class="col-sm-3">
                         <button class="btn sprite sprite3" onclick="setAvatar('images/char-cat-girl.png')"></button>
                     </div>
-                    <div class=" col-sm-3">
+                    <div class="col-sm-3">
                         <button class="btn sprite sprite4" onclick="setAvatar('images/char-pink-girl.png')"></button>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="load-game" onclick=startGame()>Start Game</button>
+                    <button type="button" class="btn btn-secondary" id="load-game" onclick=startGame()>Start Game</button>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal-backdrop"></div>
 
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>
