@@ -72,7 +72,7 @@ var Player = function() {
     this.speed = 50;
     this.sprite = 'images/char-princess-girl.png';
     this.score = 0;
-    this.highScore = 0;
+    this.highScore = 100;
 };
 
 // update() method for player:
@@ -90,22 +90,24 @@ Player.prototype.render = function() {
 
 // handleInput() method for player:
 Player.prototype.handleInput = function(event) {
-    //if left key is pressed:
-    if(event === 'left' && this.x > 2) { //Check player isn't on left edge
+    // If left key is pressed
+    // than check if player is on left side
+    if(event === 'left' && this.x > 2) {
         this.x = this.x - 100;
     }
 
-    //if right key is pressed:
-    if(event === 'right' && this.x < 402) { //Check player isn't on right edge
+    // If right key is pressed
+    // than check if player is on right side
+    if(event === 'right' && this.x < 402) {
         this.x = this.x + 100;
     }
 
-    //if up key is pressed:
+    // If up key is pressed, than check if player is at the top
     if(event === 'up' && this.y > 2) {
         this.y = this.y - 82;
     }
 
-    //if down key is pressed:
+    // If down key is pressed, than check if player is at the bottom
     if(event === 'down' && this.y < 402) {
         this.y = this.y + 82;
     }
@@ -113,25 +115,26 @@ Player.prototype.handleInput = function(event) {
 
 Player.prototype.renderStatus = function() {
     ctx.clearRect(0, 20 , 505 , 25);
-    ctx.font = "20px Roboto";
+    ctx.font = "2.5em Monospace";
     // Draw scores on the top left
-    ctx.fillText("Score: " + this.score, 0, 40);
-    // High score during gaming session
-    if(this.score > this.highScore) this.highScore = this.score;
-    ctx.fillText("High Score: " + this.highScore, 380, 40);
-
+    ctx.fillText("Score:" + this.score, 0, 40);
+    // Setting the high score for current game
+    if(this.score > this.highScore) {
+        this.highScore = this.score;
+    }
+    ctx.fillText("High Score:" + this.highScore, 230, 40);
 };
 
+// Function which checks if collisions has occured
 checkCollisions = function() {
     allEnemies.forEach(function(enemy) {
         if(collide(enemy, player)){
-           console.log('collided');
            resetPlayerStat(0);
         }
     });
 };
 
-// Returns true if sprite1 and sprite2 collide
+// Returns true if sprite1 and sprite2 collides
 function collide(sprite1, sprite2) {
         return (sprite2.x < (sprite1.x + SPRITE_WIDTH)
             && (sprite2.x + SPRITE_WIDTH) > sprite1.x
@@ -146,6 +149,7 @@ function resetPlayerStat(score){
     player.speed = 50;
     player.score = score;
 }
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
