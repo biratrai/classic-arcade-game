@@ -18,7 +18,7 @@ function startGame(){
     setTimeout(() => {
         modal.hide()
         $(".modal-backdrop").remove()
-    }, 599);  
+    }, 599);
 }
 
 /* Function to set the avatar of the sprite
@@ -85,7 +85,6 @@ Player.prototype.update = function(dt) {
 
 // render() method for player:
 Player.prototype.render = function() {
-    console.log(`render ${this.x} ${this.y} ${this.sprite}`);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
