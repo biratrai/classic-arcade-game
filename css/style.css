@@ -1,28 +1,48 @@
-body, h1, h2 {
+body {
     text-align: center;
+    margin: 0 auto;
+    max-width: 40em;
 }
 
-/* Modal Header */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    opacity: .85;
+}
+
+.modal {
+    width: 38em;
+    margin: 3em auto;
+    overflow: visible;
+}
+
 .modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
 
-/* Modal Body */
 .modal-body {
-	padding: 2px 16px;
-	background: #ccc;
+    padding: 2px 16px;
+    background: #ccc;
+    display: flex;
 }
 
-/* Modal Footer */
+.character-select {
+    height: 7em;
+}
+
 .modal-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
 
-/* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -30,26 +50,21 @@ body, h1, h2 {
     padding: 0;
     border: 1px solid #888;
     width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Add Animation */
 @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+    to {
+        top: -14em;
+        opacity: 0;
+    }
 }
 
-
-.hide-overlay {
-    display: none !important;
-    opacity: 0 !important;
+.hide-modal {
+    animation: animatetop .6s ease-out;
 }
 
-.btn {
-    border-radius: 50%;
-}
 .sprite1 {
     background-image: url(../images/char-boy.png);
 }
@@ -65,16 +80,17 @@ body, h1, h2 {
 .sprite4 {
     background-image: url(../images/char-pink-girl.png);
 }
+
 .sprite {
-     background-size: cover;
-     background-position: center;
-     background-repeat: no-repeat;
-     display: inline-block;
-     border: none;
-     padding: 20px;
-     width: 70px;
-     border-radius: 50%;
-     height: 70px;
-     transition: all 0.5s;
-     cursor: pointer;
+    background-size: cover;
+    background-position: 0 -2.5em;
+    background-repeat: no-repeat;
+    margin: 1em auto;
+    border: none;
+    padding: 20px;
+    width: 100%;
+    border-radius: 50%;
+    height: 75%;
+    transition: all 0.5s;
+    cursor: pointer;
 }
