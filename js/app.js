@@ -1,17 +1,17 @@
 var SPRITE_WIDTH = 80;
 var SPRITE_HEIGHT = 60;
 
-let modal;
-let showModal = true;
+let modal = $('#myModal');
 
 /*
 * Function to load the game show the modal
 */
 function loadGame(){
-    modal = document.getElementById('myModal');
-    if(showModal){
-        modal.style.display = "block";      
-    }
+    modal.addClass("hide-modal")
+    setTimeout(() => {
+        modal.hide()
+        $(".modal-backdrop").remove()
+    }, 599)
 }
 
 /*
