@@ -7,20 +7,18 @@ let modal = $('#myModal');
 * Function to load the game show the modal
 */
 function loadGame(){
-    modal.addClass("hide-modal")
-    setTimeout(() => {
-        modal.hide()
-        $(".modal-backdrop").remove()
-    }, 599)
+    modal.show();
 }
 
 /*
 * Function to start the game and hide the modal
 */
 function startGame(){
-    console.log("start game "+ modal);
-    modal.style.display = "none";
-    showModal = false;   
+     modal.addClass("hide-modal");
+    setTimeout(() => {
+        modal.hide()
+        $(".modal-backdrop").remove()
+    }, 599);  
 }
 
 /* Function to set the avatar of the sprite
@@ -46,7 +44,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(!showModal){
+    if (modal.css("display") === "none") {
         // Move enemy sprite along the x-axis with increase of delta time
         this.x += this.speed * dt;
 
@@ -60,7 +58,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    if(!showModal){
+    if (modal.css("display") === "none") {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 };
